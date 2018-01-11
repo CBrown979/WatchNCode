@@ -77,14 +77,25 @@ candice.sayName();
 
 var todoList = {
     todos: [],
-    displayTodos: function(){
-        console.log(this.todos);
+    displayTodos: function(){//display todos should tell if .todos is empty
+        if(this.todos.length===0){
+            console.log('Your todo list is empty');
+        } else {
+        console.log('My Todos:');
+        for(var i=0; i<this.todos.length; i++){
+            if(this.todos[i].completed === true){//display todos should show .completed
+                console.log('(x)', this.todos[i].todoText);
+            } else {
+                console.log('( )', this.todos[i].todoText);
+            }
+        }
+      }
     },
     addTodos: function(todoText){ //todoList.addTodo should add objects
         this.todos.push({
             todoText: todoText,
             completed: false
-            });
+        });
         this.displayTodos();
     },
     changeTodos: function(position, todoText){//changeTodo should change the todoText property
@@ -107,9 +118,24 @@ var todoList = {
 // console.log(todoList.addTodos('item 4', 'item 5'));
 // console.log(todoList.changeTodos(3, 'changed'));
 // console.log(todoList.deleteTodos(1));
-console.log(todoList.addTodos('this is an object'));
-console.log(todoList.changeTodos(0,"second try"));
-console.log(todoList.addTodos('boolean testings'));
-console.log(todoList.toggleCompleted(0));
-console.log(todoList.toggleCompleted(1));
+// console.log(todoList.addTodos('this is an object'));
+// console.log(todoList.changeTodos(0,"second try"));
+// console.log(todoList.addTodos('boolean testings'));
+// console.log(todoList.toggleCompleted(0));
+// console.log(todoList.toggleCompleted(1));
+// console.log(todoList.addTodos('first'));
+// console.log(todoList.addTodos('second'));
+// console.log(todoList.addTodos('third'));
 
+// console.log(todoList.addTodos('first entry'));
+// console.log(todoList.deleteTodos(0));
+//Output for above line 130 and 131
+// My Todos:
+// first entry
+// undefined
+// Your todo list is empty
+// undefined
+
+console.log(todoList.addTodos("first"));
+console.log(todoList.addTodos("second"));
+console.log(todoList.toggleCompleted(0));
