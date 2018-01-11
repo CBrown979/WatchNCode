@@ -79,7 +79,7 @@ var todoList = {
     todos: [],
     displayTodos: function(){//display todos should tell if .todos is empty
         if(this.todos.length===0){
-            console.log('Your todo list is empty');
+            console.log('Your todo list is empty!');
         } else {
         console.log('My Todos:');
         for(var i=0; i<this.todos.length; i++){
@@ -136,6 +136,24 @@ var todoList = {
         this.displayTodos();
     }
 };
+
+// 1 - get access to the display todos button
+var displayTodosButton = document.getElementById('displayTodosButton');
+// console.log(displayTodosButton);
+
+// 2 - run displayTodos method, when display button is clicked
+displayTodosButton.addEventListener('click', function(){
+    todoList.displayTodos();
+});
+todoList.addTodos('love yourself');
+todoList.addTodos('eat right');
+
+//3 - clicking toggleAll should run todoList.toggleAll
+var toggleAllButton = document.getElementById('toggleAllButton');
+toggleAllButton.addEventListener('click', function(){
+    todoList.toggleAll();
+});
+
 // console.log(todoList.todos);
 // console.log(todoList.displayTodos());
 // console.log(todoList.addTodos('item 4', 'item 5'));
@@ -156,14 +174,14 @@ var todoList = {
 // My Todos:
 // first entry
 // undefined
-// Your todo list is empty
+// Your todolist is empty
 // undefined
 
-console.log(todoList.addTodos("first"));
-console.log(todoList.addTodos("second"));
-console.log(todoList.addTodos("third"));
-// console.log(todoList.toggleCompleted(0));
-// console.log(todoList.toggleCompleted(1));
-console.log(todoList.toggleAll());
-// console.log(todoList.displayTodos());
-console.log(todoList.toggleAll());
+// console.log(todoList.addTodos("first"));
+// console.log(todoList.addTodos("second"));
+// console.log(todoList.addTodos("third"));
+// // console.log(todoList.toggleCompleted(0));
+// // console.log(todoList.toggleCompleted(1));
+// console.log(todoList.toggleAll());
+// // console.log(todoList.displayTodos());
+// console.log(todoList.toggleAll());
