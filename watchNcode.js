@@ -111,6 +111,29 @@ var todoList = {
         var todo = this.todos[position];
         todo.completed = !todo.completed; //to flip boolean from whatever it starts out as - false to true. or true to false
         this.displayTodos();
+    },
+    toggleAll: function(){
+        var totalTodos=this.todos.length;
+        var completedTodos = 0; //we assume that completedTodos starts out as none/zero complete
+        
+        //Get number of completed todos.
+        for(var i=0; i<totalTodos; i++){
+            if(this.todos[i].completed === true){
+                completedTodos++;
+            } 
+        }   
+        //Case 1: if everything is true, make everything false
+            if (completedTodos === totalTodos){
+              for (var i=0; i<totalTodos; i++){
+                this.todos[i].completed = false;
+            }
+        //Case 2: OTHERWISE (use else), make everything true
+        } else {
+            for(var i=0; i<totalTodos; i++){
+                this.todos[i].completed = true;
+            }
+        }
+        this.displayTodos();
     }
 };
 // console.log(todoList.todos);
@@ -138,4 +161,9 @@ var todoList = {
 
 console.log(todoList.addTodos("first"));
 console.log(todoList.addTodos("second"));
-console.log(todoList.toggleCompleted(0));
+console.log(todoList.addTodos("third"));
+// console.log(todoList.toggleCompleted(0));
+// console.log(todoList.toggleCompleted(1));
+console.log(todoList.toggleAll());
+// console.log(todoList.displayTodos());
+console.log(todoList.toggleAll());
