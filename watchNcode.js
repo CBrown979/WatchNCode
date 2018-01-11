@@ -80,24 +80,36 @@ var todoList = {
     displayTodos: function(){
         console.log(this.todos);
     },
-    addTodos: function(todoText){
+    addTodos: function(todoText){ //todoList.addTodo should add objects
         this.todos.push({
             todoText: todoText,
             completed: false
             });
         this.displayTodos();
     },
-    changeTodos: function(position, newValue){
-        this.todos[position] = newValue;
+    changeTodos: function(position, todoText){//changeTodo should change the todoText property
+        // this.todos[position] = newValue;
+        this.todos[position].todoText = todoText;
         this.displayTodos();
     },
     deleteTodos: function(position){
         this.todos.splice(position, 1);
         this.displayTodos();
+    },
+    toggleCompleted: function(position){ //toggleCompleted should change the completed property
+        var todo = this.todos[position];
+        todo.completed = !todo.completed; //to flip boolean from whatever it starts out as - false to true. or true to false
+        this.displayTodos();
     }
 };
 // console.log(todoList.todos);
 // console.log(todoList.displayTodos());
-console.log(todoList.addTodos('item 4', 'item 5'));
-console.log(todoList.changeTodos(3, 'changed'));
-console.log(todoList.deleteTodos(1));
+// console.log(todoList.addTodos('item 4', 'item 5'));
+// console.log(todoList.changeTodos(3, 'changed'));
+// console.log(todoList.deleteTodos(1));
+console.log(todoList.addTodos('this is an object'));
+console.log(todoList.changeTodos(0,"second try"));
+console.log(todoList.addTodos('boolean testings'));
+console.log(todoList.toggleCompleted(0));
+console.log(todoList.toggleCompleted(1));
+
