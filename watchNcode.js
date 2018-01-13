@@ -137,22 +137,53 @@ var todoList = {
     }
 };
 
+//BELOW HAS BEEN REFACTORED
 // 1 - get access to the display todos button
-var displayTodosButton = document.getElementById('displayTodosButton');
-// console.log(displayTodosButton);
+// var displayTodosButton = document.getElementById('displayTodosButton');
+// // console.log(displayTodosButton);
+// // 2 - run displayTodos method, when display button is clicked
+// displayTodosButton.addEventListener('click', function(){
+//     todoList.displayTodos();
+// });
+// todoList.addTodos('love yourself');
+// todoList.addTodos('eat right');
+// //3 - clicking toggleAll should run todoList.toggleAll
+// var toggleAllButton = document.getElementById('toggleAllButton');
+// toggleAllButton.addEventListener('click', function(){
+//     todoList.toggleAll();
+// });
+//ABOVE HAS BEEN REFACTORED
 
-// 2 - run displayTodos method, when display button is clicked
-displayTodosButton.addEventListener('click', function(){
-    todoList.displayTodos();
-});
-todoList.addTodos('love yourself');
-todoList.addTodos('eat right');
-
-//3 - clicking toggleAll should run todoList.toggleAll
-var toggleAllButton = document.getElementById('toggleAllButton');
-toggleAllButton.addEventListener('click', function(){
-    todoList.toggleAll();
-});
+var handlers = {
+    displayTodos: function(){
+        todoList.displayTodos();
+    },
+    addTodo: function(){
+        var addTodoTextInput = document.getElementById('addTodoTextInput');
+        todoList.addTodos(addTodoTextInput.value); //gives value of whatever is typed into the input
+        addTodoTextInput.value = '';
+    },
+    changeTodo: function(){
+        var changeTodoPositionInput = document.getElementById("changeTodoPositionInput");
+        var changeTodoTextInput = document.getElementById("changeTodoTextInput");
+        todoList.changeTodos(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);//.value only gives value as a string, must use .valueAsNumber for numbers
+        changeTodoPositionInput.value=''; //I originally thought to use .valueAsNumber, but that did not clear the value -- just use .value to clear numbers
+        changeTodoTextInput.value='';
+    },
+    deleteTodo: function(){
+        var deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput");
+        todoList.deleteTodos(deleteTodoPositionInput.valueAsNumber);
+        deleteTodoPositionInput.value = '';
+    },
+    toggleCompleted: function(){
+        var toggleCompletedPositionInput = document.getElementById("toggleCompletedPositionInput");
+        todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
+        toggleCompletedPositionInput.value = '';
+    },
+    toggleAll: function(){
+        todoList.toggleAll();
+    }
+};
 
 // console.log(todoList.todos);
 // console.log(todoList.displayTodos());
